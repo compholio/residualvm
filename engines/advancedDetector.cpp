@@ -78,6 +78,10 @@ static Common::String generatePreferredTarget(const Common::String &id, const AD
 		res = res + "-cd";
 	}
 
+	if (desc->flags & ADGF_REMASTERED) {
+		res = res + "-remastered";
+	}
+
 	if (desc->platform != Common::kPlatformDOS && desc->platform != Common::kPlatformUnknown && !(desc->flags & ADGF_DROPPLATFORM)) {
 		res = res + "-" + getPlatformAbbrev(desc->platform);
 	}
