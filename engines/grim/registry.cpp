@@ -101,6 +101,7 @@ Registry::Registry() :
 	ConfMan.registerDefault("subtitles", true);
 	ConfMan.registerDefault("talkspeed", 179);
 	ConfMan.registerDefault("game_devel_mode", false);
+	ConfMan.registerDefault("widescreen", false);
 	ConfMan.registerDefault("screen_scaling", false);
 	ConfMan.registerDefault("advanced_lighting", true);
 	ConfMan.registerDefault("commentary_enabled", false);
@@ -121,6 +122,7 @@ Registry::Registry() :
 	_textSpeed.setInt(convertTalkSpeedFromGUI(ConfMan.getInt("talkspeed")));
 	_mouseSpeed.setInt(convertTalkSpeedFromGUI(ConfMan.getInt("mousespeed")));
 	_speechMode.setInt(convertSpeechModeFromGUI(ConfMan.getBool("subtitles"), ConfMan.getBool("speech_mute")));
+	_screenMode.setBool(convertScreenModeFromGUI(ConfMan.getBool("widescreen")));
 	_screenScaling.setBool(convertScreenScalingFromGUI(ConfMan.getBool("screen_scaling")));
 	_advLighting.setBool(convertAdvLightingFromGUI(ConfMan.getBool("advanced_lighting")));
 	_language.setInt(convertLanguageFromGUI(ConfMan.get("language")));
@@ -164,6 +166,8 @@ Registry::Value &Registry::value(const Common::String &key) {
 		return _mouseSpeed;
 	} else if (scumm_stricmp("TextMode", key.c_str()) == 0 || scumm_stricmp("SpeechMode", key.c_str()) == 0) {
 		return _speechMode;
+	} else if (scumm_stricmp("Widescreen", key.c_str()) == 0) {
+		return _screenMode;
 	} else if (scumm_stricmp("ResolutionScaling", key.c_str()) == 0) {
 		return _screenScaling;
 	} else if (scumm_stricmp("AdvancedLighting", key.c_str()) == 0) {
@@ -214,6 +218,8 @@ const Registry::Value &Registry::value(const Common::String &key) const {
 		return _mouseSpeed;
 	} else if (scumm_stricmp("TextMode", key.c_str()) == 0 || scumm_stricmp("SpeechMode", key.c_str()) == 0) {
 		return _speechMode;
+	} else if (scumm_stricmp("Widescreen", key.c_str()) == 0) {
+		return _screenMode;
 	} else if (scumm_stricmp("ResolutionScaling", key.c_str()) == 0) {
 		return _screenScaling;
 	} else if (scumm_stricmp("AdvancedLighting", key.c_str()) == 0) {
@@ -283,6 +289,7 @@ void Registry::save() {
 	ConfMan.setInt("talkspeed", convertTalkSpeedToGUI(_textSpeed.getInt()));
 	ConfMan.setInt("mousespeed", convertTalkSpeedToGUI(_mouseSpeed.getInt()));
 	ConfMan.setBool("subtitles", convertSubtitlesToGUI(_speechMode.getInt()));
+	ConfMan.setBool("widescreen", convertScreenModeToGUI(_screenMode.getInt()));
 	ConfMan.setBool("screen_scaling", convertScreenScalingToGUI(_screenScaling.getInt()));
 	ConfMan.setBool("advanced_lighting", convertAdvLightingToGUI(_advLighting.getInt()));
 	ConfMan.setBool("speech_mute", convertSpeechMuteToGUI(_speechMode.getInt()));
@@ -329,6 +336,16 @@ uint Registry::convertSpeechModeFromGUI(bool subtitles, bool speechMute) {
 		return 1;
 	else
 		warning("Wrong configuration: Both subtitles and speech are off. Assuming subtitles only");
+	return 1;
+}
+
+bool Registry::convertScreenModeToGUI(uint widescreen_mode) {
+	return (widescreen_mode == 2);
+}
+
+uint Registry::convertScreenModeFromGUI(bool widescreen_mode) {
+	if (widescreen_mode)
+		return 2;
 	return 1;
 }
 

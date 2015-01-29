@@ -96,6 +96,7 @@ private:
 	Value _joystick;
 	Value _spewOnError;
 	Value _transcript;
+	Value _screenMode;
 	Value _screenScaling;
 	Value _advLighting;
 	Value _language;
@@ -109,6 +110,8 @@ private:
 	bool convertSubtitlesToGUI(uint speechmode);
 	bool convertSpeechMuteToGUI(uint speechmode);
 	uint convertSpeechModeFromGUI(bool subtitles, bool speechMute);
+	bool convertScreenModeToGUI(uint widescreen_mode);
+	uint convertScreenModeFromGUI(bool widescreen_mode);
 	bool convertScreenScalingToGUI(uint scaling);
 	uint convertScreenScalingFromGUI(bool scaling);
 	bool convertAdvLightingToGUI(uint scaling);
