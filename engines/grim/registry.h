@@ -95,6 +95,7 @@ private:
 	Value _joystick;
 	Value _spewOnError;
 	Value _transcript;
+	Value _screenScaling;
 
 	bool _dirty;
 
@@ -105,6 +106,8 @@ private:
 	bool convertSubtitlesToGUI(uint speechmode);
 	bool convertSpeechMuteToGUI(uint speechmode);
 	uint convertSpeechModeFromGUI(bool subtitles, bool speechMute);
+	bool convertScreenScalingToGUI(uint scaling);
+	uint convertScreenScalingFromGUI(bool scaling);
 };
 
 extern Registry *g_registry;

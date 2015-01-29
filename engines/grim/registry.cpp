@@ -46,6 +46,7 @@ Registry *g_registry = nullptr;
 // VoiceEffects
 // LastSavedGame
 // good_times
+// ResolutionScaling
 
 void Registry::Value::setString(const Common::String &str) {
 	_val._str = str;
@@ -99,6 +100,7 @@ Registry::Registry() :
 	ConfMan.registerDefault("subtitles", true);
 	ConfMan.registerDefault("talkspeed", 179);
 	ConfMan.registerDefault("game_devel_mode", false);
+	ConfMan.registerDefault("screen_scaling", false);
 
 	// Read settings
 	_spewOnError.setString(ConfMan.get("spew_on_error"));
@@ -115,6 +117,7 @@ Registry::Registry() :
 	_textSpeed.setInt(convertTalkSpeedFromGUI(ConfMan.getInt("talkspeed")));
 	_mouseSpeed.setInt(convertTalkSpeedFromGUI(ConfMan.getInt("mousespeed")));
 	_speechMode.setInt(convertSpeechModeFromGUI(ConfMan.getBool("subtitles"), ConfMan.getBool("speech_mute")));
+	_screenScaling.setBool(convertScreenScalingFromGUI(ConfMan.getBool("screen_scaling")));
 
 	// These can't be set as bool because the scripts do a check against "TRUE" and "FALSE".
 	// Right, they do string comparisons. doh!
@@ -153,6 +156,8 @@ Registry::Value &Registry::value(const Common::String &key) {
 		return _mouseSpeed;
 	} else if (scumm_stricmp("TextMode", key.c_str()) == 0 || scumm_stricmp("SpeechMode", key.c_str()) == 0) {
 		return _speechMode;
+	} else if (scumm_stricmp("ResolutionScaling", key.c_str()) == 0) {
+		return _screenScaling;
 	} else if (scumm_stricmp("MovementMode", key.c_str()) == 0) {
 		return _movement;
 	} else if (scumm_stricmp("JoystickEnabled", key.c_str()) == 0) {
@@ -195,6 +200,8 @@ const Registry::Value &Registry::value(const Common::String &key) const {
 		return _mouseSpeed;
 	} else if (scumm_stricmp("TextMode", key.c_str()) == 0 || scumm_stricmp("SpeechMode", key.c_str()) == 0) {
 		return _speechMode;
+	} else if (scumm_stricmp("ResolutionScaling", key.c_str()) == 0) {
+		return _screenScaling;
 	} else if (scumm_stricmp("MovementMode", key.c_str()) == 0) {
 		return _movement;
 	} else if (scumm_stricmp("JoystickEnabled", key.c_str()) == 0) {
@@ -257,6 +264,7 @@ void Registry::save() {
 	ConfMan.setInt("talkspeed", convertTalkSpeedToGUI(_textSpeed.getInt()));
 	ConfMan.setInt("mousespeed", convertTalkSpeedToGUI(_mouseSpeed.getInt()));
 	ConfMan.setBool("subtitles", convertSubtitlesToGUI(_speechMode.getInt()));
+	ConfMan.setBool("screen_scaling", convertScreenScalingToGUI(_screenScaling.getInt()));
 	ConfMan.setBool("speech_mute", convertSpeechMuteToGUI(_speechMode.getInt()));
 
 	ConfMan.set("movement", _movement.getString());
@@ -301,6 +309,16 @@ uint Registry::convertSpeechModeFromGUI(bool subtitles, bool speechMute) {
 	else
 		warning("Wrong configuration: Both subtitles and speech are off. Assuming subtitles only");
 	return 1;
+}
+
+bool Registry::convertScreenScalingToGUI(uint scaling) {
+	return (scaling == 1);
+}
+
+uint Registry::convertScreenScalingFromGUI(bool scaling) {
+	if (scaling)
+		return 1;
+	return 2;
 }
 
 } // end of namespace Grim
