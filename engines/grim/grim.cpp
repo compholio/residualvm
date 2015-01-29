@@ -244,10 +244,12 @@ void GrimEngine::createRenderer() {
 }
 
 const char *GrimEngine::getUpdateFilename() {
-	if (!(getGameFlags() & ADGF_DEMO))
-		return "gfupd101.exe";
-	else
+	if (getGameFlags() & ADGF_DEMO)
 		return nullptr;
+	if (getGameFlags() & ADGF_REMASTERED)
+		return nullptr;
+
+	return "gfupd101.exe";
 }
 
 Common::Error GrimEngine::run() {
