@@ -994,6 +994,7 @@ STUB_FUNC(Lua_V1::SetResolutionScaling)
 STUB_FUNC(Lua_V1::SetAdvancedLighting)
 STUB_FUNC(Lua_V1::SetLanguage)
 STUB_FUNC(Lua_V1::EnableCommentary)
+STUB_FUNC(Lua_V1::LoadRemappedKeys)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1003,7 +1004,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "SetResolutionScaling", LUA_OPCODE(Lua_V1, SetResolutionScaling) },
 	{ "SetAdvancedLighting", LUA_OPCODE(Lua_V1, SetAdvancedLighting) },
 	{ "SetLanguage", LUA_OPCODE(Lua_V1, SetLanguage) },
-	{ "EnableCommentary", LUA_OPCODE(Lua_V1, EnableCommentary) }
+	{ "EnableCommentary", LUA_OPCODE(Lua_V1, EnableCommentary) },
+	{ "LoadRemappedKeys", LUA_OPCODE(Lua_V1, LoadRemappedKeys) }
 };
 
 void Lua_V1::registerOpcodes() {
