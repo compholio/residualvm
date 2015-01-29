@@ -120,6 +120,7 @@ Registry::Registry() :
 	_speechMode.setInt(convertSpeechModeFromGUI(ConfMan.getBool("subtitles"), ConfMan.getBool("speech_mute")));
 	_screenScaling.setBool(convertScreenScalingFromGUI(ConfMan.getBool("screen_scaling")));
 	_advLighting.setBool(convertAdvLightingFromGUI(ConfMan.getBool("advanced_lighting")));
+	_language.setInt(convertLanguageFromGUI(ConfMan.get("language")));
 
 	// These can't be set as bool because the scripts do a check against "TRUE" and "FALSE".
 	// Right, they do string comparisons. doh!
@@ -170,6 +171,8 @@ Registry::Value &Registry::value(const Common::String &key) {
 		return _spewOnError;
 	} else if (scumm_stricmp("Transcript", key.c_str()) == 0) {
 		return _transcript;
+	} else if (scumm_stricmp("Language", key.c_str()) == 0) {
+		return _language;
 	}
 
 	assert(0);
@@ -216,6 +219,8 @@ const Registry::Value &Registry::value(const Common::String &key) const {
 		return _spewOnError;
 	} else if (scumm_stricmp("Transcript", key.c_str()) == 0) {
 		return _transcript;
+	} else if (scumm_stricmp("Language", key.c_str()) == 0) {
+		return _language;
 	}
 
 	assert(0);
@@ -273,6 +278,7 @@ void Registry::save() {
 	ConfMan.setBool("screen_scaling", convertScreenScalingToGUI(_screenScaling.getInt()));
 	ConfMan.setBool("advanced_lighting", convertAdvLightingToGUI(_advLighting.getInt()));
 	ConfMan.setBool("speech_mute", convertSpeechMuteToGUI(_speechMode.getInt()));
+	ConfMan.set("language", convertLanguageToGUI(_language.getInt()));
 
 	ConfMan.set("movement", _movement.getString());
 	ConfMan.set("joystick", _joystick.getString());
@@ -336,6 +342,22 @@ uint Registry::convertAdvLightingFromGUI(bool adv_lighting) {
 	if (adv_lighting)
 		return 1;
 	return 2;
+}
+
+uint Registry::convertLanguageFromGUI(const Common::String &language) {
+	if(language == "en") {
+		return 1;
+	}
+	warning("unhandled language %s, assuming english.", language.c_str());
+	return 1;
+}
+
+Common::String Registry::convertLanguageToGUI(uint language) {
+	if (language == 1) {
+		return "en";
+	}
+	warning("unhandled language code %d, assuming english.", language);
+	return "en";
 }
 
 } // end of namespace Grim

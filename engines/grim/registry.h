@@ -97,6 +97,7 @@ private:
 	Value _transcript;
 	Value _screenScaling;
 	Value _advLighting;
+	Value _language;
 
 	bool _dirty;
 
@@ -111,6 +112,8 @@ private:
 	uint convertScreenScalingFromGUI(bool scaling);
 	bool convertAdvLightingToGUI(uint scaling);
 	uint convertAdvLightingFromGUI(bool scaling);
+	Common::String convertLanguageToGUI(uint language);
+	uint convertLanguageFromGUI(const Common::String &language);
 };
 
 extern Registry *g_registry;
