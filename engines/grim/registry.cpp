@@ -40,6 +40,7 @@ Registry *g_registry = nullptr;
 // SfxVolume
 // MusicVolume
 // VoiceVolume
+// DirectorsCommentaryVolume
 // TextSpeed
 // VoiceEffects
 // LastSavedGame
@@ -107,6 +108,7 @@ Registry::Registry() :
 	_musicVolume.setInt(convertVolumeFromMixer(ConfMan.getInt("music_volume")));
 	_sfxVolume.setInt(convertVolumeFromMixer(ConfMan.getInt("sfx_volume")));
 	_voiceVolume.setInt(convertVolumeFromMixer(ConfMan.getInt("speech_volume")));
+	_commentaryVolume.setInt(convertVolumeFromMixer(ConfMan.getInt("commentary_volume")));
 	_lastSavedGame.setString(ConfMan.get("last_saved_game"));
 	_gamma.setInt(ConfMan.getInt("gamma"));
 	_textSpeed.setInt(convertTalkSpeedFromGUI(ConfMan.getInt("talkspeed")));
@@ -135,6 +137,8 @@ Registry::Value &Registry::value(const Common::String &key) {
 		return _sfxVolume;
 	} else if (scumm_stricmp("VoiceVolume", key.c_str()) == 0) {
 		return _voiceVolume;
+	} else if (scumm_stricmp("DirectorsCommentaryVolume", key.c_str()) == 0) {
+		return _commentaryVolume;
 	} else if (scumm_stricmp("LastSavedGame", key.c_str()) == 0) {
 		return _lastSavedGame;
 	} else if (scumm_stricmp("Gamma", key.c_str()) == 0 || scumm_stricmp("GammaCorrection", key.c_str()) == 0) {
@@ -173,6 +177,8 @@ const Registry::Value &Registry::value(const Common::String &key) const {
 		return _sfxVolume;
 	} else if (scumm_stricmp("VoiceVolume", key.c_str()) == 0) {
 		return _voiceVolume;
+	} else if (scumm_stricmp("DirectorsCommentaryVolume", key.c_str()) == 0) {
+		return _commentaryVolume;
 	} else if (scumm_stricmp("LastSavedGame", key.c_str()) == 0) {
 		return _lastSavedGame;
 	} else if (scumm_stricmp("Gamma", key.c_str()) == 0 || scumm_stricmp("GammaCorrection", key.c_str()) == 0) {
@@ -239,6 +245,7 @@ void Registry::save() {
 	ConfMan.setInt("music_volume", convertVolumeToMixer(_musicVolume.getInt()));
 	ConfMan.setInt("sfx_volume", convertVolumeToMixer(_sfxVolume.getInt()));
 	ConfMan.setInt("speech_volume", convertVolumeToMixer(_voiceVolume.getInt()));
+	ConfMan.setInt("commentary_volume", convertVolumeToMixer(_commentaryVolume.getInt()));
 	ConfMan.set("last_saved_game", _lastSavedGame.getString());
 	ConfMan.setInt("gamma", _gamma.getInt());
 	ConfMan.setInt("talkspeed", convertTalkSpeedToGUI(_textSpeed.getInt()));

@@ -84,6 +84,7 @@ private:
 	Value _musicVolume;
 	Value _sfxVolume;
 	Value _voiceVolume;
+	Value _commentaryVolume;
 	Value _lastSavedGame;
 	Value _gamma;
 	Value _voiceEffects;
