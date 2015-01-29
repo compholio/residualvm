@@ -993,6 +993,7 @@ STUB_FUNC(Lua_V1::SetMouseSpeedScale)
 STUB_FUNC(Lua_V1::SetResolutionScaling)
 STUB_FUNC(Lua_V1::SetAdvancedLighting)
 STUB_FUNC(Lua_V1::SetLanguage)
+STUB_FUNC(Lua_V1::EnableCommentary)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1001,7 +1002,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "SetMouseSpeedScale", LUA_OPCODE(Lua_V1, SetMouseSpeedScale) },
 	{ "SetResolutionScaling", LUA_OPCODE(Lua_V1, SetResolutionScaling) },
 	{ "SetAdvancedLighting", LUA_OPCODE(Lua_V1, SetAdvancedLighting) },
-	{ "SetLanguage", LUA_OPCODE(Lua_V1, SetLanguage) }
+	{ "SetLanguage", LUA_OPCODE(Lua_V1, SetLanguage) },
+	{ "EnableCommentary", LUA_OPCODE(Lua_V1, EnableCommentary) }
 };
 
 void Lua_V1::registerOpcodes() {
