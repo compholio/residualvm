@@ -36,40 +36,48 @@ const char *gfupd101[] = {
 	"bc57c4db2ab814f3bb115ec5702b62f4"
 };
 const char *year4mus[] = {
-	"939e041887c1b14f99ad951ac8e3cb25" //english unpatched
+	"939e041887c1b14f99ad951ac8e3cb25", //english unpatched
+	"590ae97a203f7550ae9e70c6f6e20a1a" //remastered
 };
 const char *year3mus[] = {
-	"df556a8fc151f6f48bb68a8cef855e7d" //english unpatched
+	"df556a8fc151f6f48bb68a8cef855e7d", //english unpatched
+	"935067aab48ae71fcfecab269abe8d3d" //remastered
 };
 const char *year2mus[] = {
-	"775376fccf0415258be6b33e7e6e4985" //english unpatched
+	"775376fccf0415258be6b33e7e6e4985", //english unpatched
+	"77d19cfcf0dcffdb07acd1625f995599", //remastered
 };
 const char *year1mus[] = {
-	"c555c95b0f7557617da364091589d6ea" //english unpatched
+	"c555c95b0f7557617da364091589d6ea", //english unpatched
+	"767ed4b05391377fb42306d7bfb78748" //remastered
 };
 const char *year0mus[] = {
-	"fea10f11abe3ac32d53e4798f80d5ba0" //english unpatched
+	"fea10f11abe3ac32d53e4798f80d5ba0", //english unpatched
+	"f4aefde327fc7c30f7c3886a16f1be4c" //remastered
 };
 const char *vox0004[] = {
 	"ae53a36f77eb0d42a28653b28c345439", //english unpatched
 	"57915d4dd3aa5aa44817477b7bd41ce6", //italian unpatched
 	"bae246c5335c1d139b97a48277ee8841", //german unpatched
 	"a49dce6e1bb83ad40b47e03903aaff1b", //french unpatched
-	"3577a8b6cf013bc5b9c9133e29d1f4f0" //spanish unpatched
+	"3577a8b6cf013bc5b9c9133e29d1f4f0", //spanish unpatched
+	"1a5c8f6f068dd463f3d1dfb7e92a53f6" //remastered
 };
 const char *vox0003[] = {
 	"7c88ad7c949a516793b584299f33ed23", //english unpatched
 	"f900cb063fbd0ef2a0516e9a00291d13", //italian unpatched
 	"e13eb421b9490cbaeef66f0cf6156764", //german unpatched
 	"c4aa2c45b24f351e8fce40a141084fb0", //french unpatched
-	"1d4e94e3d3fd803a02c9993412359082" //spanish unpatched
+	"1d4e94e3d3fd803a02c9993412359082", //spanish unpatched
+	"e76c8c331cb04d75938e919373f9457f" //remastered
 };
 const char *vox0002[] = {
 	"70419878e32377d9d2906fbcb2cb59b5", //english unpatched
 	"616e4147c39268b650ce112bf79ea3a1", //italian unpatched
 	"5ea9fde04f3315a51fe1fe9c5bdb9d0d", //german unpatched
 	"24bbf1f6d3d63ae07ad2dd06bd7dad8c", //french unpatched
-	"c4484dadd4a33066290e1847523d7d64" //spanish unpatched
+	"c4484dadd4a33066290e1847523d7d64", //spanish unpatched
+	"5d76c090dda905b65a9f38f8e07d73dd" //remastered
 };
 const char *vox0001[] = {
 	"40beb2e0a6572dc89fddb21f282bc237", //english pre-patched
@@ -77,7 +85,8 @@ const char *vox0001[] = {
 	"a0455d5d883ed46f0bda5030e4b5654c", //italian unpatched
 	"e13eb421b9490cbaeef66f0cf6156764", //german unpatched
 	"e940d5a4a4f2229f0a6674bf45464457", //french unpatched
-	"77cdd6f02bc3f7085bff17c454066de3" //spanish unpatched
+	"77cdd6f02bc3f7085bff17c454066de3", //spanish unpatched
+	"9fd040b907a2448f071c819421820060" //remastered
 };
 const char *vox0000[] = {
 	"c7900f32d48d7e265629bd355a21c795", //english pre-patched
@@ -85,55 +94,66 @@ const char *vox0000[] = {
 	"c9e1a755f280b3ebff58578c4e5f1e52", //italian unpatched
 	"f1b8c1de4f82099ab080f9cbe2b02da6", //german unpatched
 	"dbe35af39eec29db21a4c6e1c228cc9d", //french unpatched
-	"076bf048de229ad8cefcb3d7c0bfd134" //spanish unpatched
+	"076bf048de229ad8cefcb3d7c0bfd134", //spanish unpatched
+	"b10552846630e0e13190e3b3bfaba1f3" //remastered
 };
 const char *movie04[] = {
 	"605d6f2cc4d21fbe702d8e637b5bcfa1", //english unpatched
 	"7c8d7e0f4beaca3910658290e8b14cf8", //italian unpatched
 	"f1b8c1de4f82099ab080f9cbe2b02da6", //german unpatched
 	"7e2a4578010cdf5407bb24dcfb6705e4", //french unpatched
-	"2daf2ec272a7be49cbfde053482f182c" //spanish unpatched
+	"2daf2ec272a7be49cbfde053482f182c", //spanish unpatched
+	"2154a5f5f6e8ebc02cfec05337c668e4" //remastered
 };
 const char *movie03[] = {
 	"113a768e7206016df72f9d2f5c1851b7", //english unpatched
 	"0fdb7dda9ebc049eac386d29bface366", //italian unpatched
 	"500bc51ce211d528f6c7170f479c9525", //german unpatched
 	"c2ba7adbf09b7a4f69c180f1c74297ee", //french unpatched
-	"fb87d5a9e3a81d3ffd521dee4432c4da" //spanish unpatched
+	"fb87d5a9e3a81d3ffd521dee4432c4da", //spanish unpatched
+	"6af56606a64b7d446e24fc217a11848a" //remastered
 };
 const char *movie02[] = {
 	"24a8704a331a03097d195f3597fe21e1", //english unpatched
 	"129dad4e40987e91c5549c819d0dad1d", //italian unpatched
 	"a4d5c108a167afb0674e26790edf65e6", //german unpatched
 	"90fce3e6e1f91455d92b072f773f0a67", //french unpatched
-	"f5879c544f4c1f1f2e2d2e92c026c245" //spanish unpatched
+	"f5879c544f4c1f1f2e2d2e92c026c245", //spanish unpatched
+	"00492f9ba407ca6067a4ad091c12c4a3" //remastered
 };
 const char *movie01[] = {
 	"548a19a0a4d4ccb8660966d646210820", //english unpatched
 	"9fd30d0289f9b4d5c09e821a0a478db5", //italian unpatched
 	"500bc51ce211d528f6c7170f479c9525", //german unpatched
 	"16674e1496e4fb3f0f5f173f12e30617", //french unpatched
-	"ede9fb7d035a5d4af496f23f811707a2" //spanish unpatched
+	"ede9fb7d035a5d4af496f23f811707a2", //spanish unpatched
+	"51e6d8cb65c36be1b5d7b95417651f28" //remastered
 };
 const char *movie00[] = {
-	"0c6b8e4fa74024c4afdf7758f8d8b1a0" //english unpatched
+	"0c6b8e4fa74024c4afdf7758f8d8b1a0", //english unpatched
+	"e2794777971f872aebeb193aea762023" //remastered
 };
 const char *data004[] = {
-	"2cdb79d3606965a9a0a3378507488dd7" //english unpatched
+	"2cdb79d3606965a9a0a3378507488dd7", //english unpatched
+	"dd83ec11f897c9cc6dc0bbfaa2fa17cb" //remastered
 };
 const char *data003[] = {
 	"76dcfc2c21f3412415674c65611fb76d", //english unpatched
-	"7f76c20f1d77db287473ffef10b8b309" //german unpatched
+	"7f76c20f1d77db287473ffef10b8b309", //german unpatched
+	"acf84258bf8f5d7acdd6ad9fa602066b" //remastered
 };
 const char *data002[] = {
-	"d236403c0d860961963db0134380001f" //english unpatched
+	"d236403c0d860961963db0134380001f", //english unpatched
+	"70169fdaf9a9d1b3c0d34883833dc7ce" //remastered
 };
 const char *data001[] = {
-	"84cf3072586fe2840ae16774adb6f5cb" //english unpatched
+	"84cf3072586fe2840ae16774adb6f5cb", //english unpatched
+	"f9538fbe81a6e4f7977549b59e8baf98" //remastered
 };
 const char *data000[] = {
 	"2069b8bf113119910df8219e787e7e94", //english pre-patched
-	"08e2505a6a7fd90d3920131b1297c60f" //english unpatched
+	"08e2505a6a7fd90d3920131b1297c60f", //english unpatched
+	"e6836e3e43572a170cdfe5f9dbe9c598" //remastered
 };
 const char *credits[] = {
 	"6dcecad8f01657184f8576aab8fb3f00", //english unpatched
@@ -393,7 +413,9 @@ void MD5Check::init() {
 			}
 			MD5SUM("grimdemo.mus", grimdemo)
 		} else {
-			MD5SUM("gfupd101.exe", gfupd101)
+			if (!(g_grim->getGameFlags() & ADGF_REMASTERED)) {
+				MD5SUM("gfupd101.exe", gfupd101)
+			}
 			MD5SUM("year4mus.lab", year4mus)
 			MD5SUM("year3mus.lab", year3mus)
 			MD5SUM("year2mus.lab", year2mus)
