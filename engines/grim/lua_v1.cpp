@@ -988,10 +988,12 @@ struct luaL_reg grimHardwareOpcodes[] = {
 };
 
 STUB_FUNC(Lua_V1::PreloadCursors)
+STUB_FUNC(Lua_V1::ImSetCommentaryVol)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
-	{ "PreloadCursors", LUA_OPCODE(Lua_V1, PreloadCursors) }
+	{ "PreloadCursors", LUA_OPCODE(Lua_V1, PreloadCursors) },
+	{ "ImSetCommentaryVol", LUA_OPCODE(Lua_V1, ImSetCommentaryVol) }
 };
 
 void Lua_V1::registerOpcodes() {
