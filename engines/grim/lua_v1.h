@@ -298,6 +298,7 @@ protected:
 	DECLARE_LUA_OPCODE(AreAchievementsInstalled);
 	DECLARE_LUA_OPCODE(GlobalSaveResolved);
 	DECLARE_LUA_OPCODE(ReadRegistryIntValue);
+	DECLARE_LUA_OPCODE(SetGameRenderMode);
 };
 
 }

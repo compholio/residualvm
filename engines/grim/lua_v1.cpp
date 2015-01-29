@@ -1015,6 +1015,7 @@ STUB_FUNC(Lua_V1::EnableCommentary)
 STUB_FUNC(Lua_V1::LoadRemappedKeys)
 STUB_FUNC(Lua_V1::AreAchievementsInstalled)
 STUB_FUNC(Lua_V1::GlobalSaveResolved)
+STUB_FUNC(Lua_V1::SetGameRenderMode)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1028,7 +1029,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "LoadRemappedKeys", LUA_OPCODE(Lua_V1, LoadRemappedKeys) },
 	{ "AreAchievementsInstalled", LUA_OPCODE(Lua_V1, AreAchievementsInstalled) },
 	{ "GlobalSaveResolved", LUA_OPCODE(Lua_V1, GlobalSaveResolved) },
-	{ "ReadRegistryIntValue", LUA_OPCODE(Lua_V1, ReadRegistryIntValue) }
+	{ "ReadRegistryIntValue", LUA_OPCODE(Lua_V1, ReadRegistryIntValue) },
+	{ "SetGameRenderMode", LUA_OPCODE(Lua_V1, SetGameRenderMode) }
 };
 
 void Lua_V1::registerOpcodes() {
