@@ -295,6 +295,7 @@ protected:
 	DECLARE_LUA_OPCODE(SetLanguage);
 	DECLARE_LUA_OPCODE(EnableCommentary);
 	DECLARE_LUA_OPCODE(LoadRemappedKeys);
+	DECLARE_LUA_OPCODE(AreAchievementsInstalled);
 };
 
 }

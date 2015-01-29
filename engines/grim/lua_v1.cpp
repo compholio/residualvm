@@ -995,6 +995,7 @@ STUB_FUNC(Lua_V1::SetAdvancedLighting)
 STUB_FUNC(Lua_V1::SetLanguage)
 STUB_FUNC(Lua_V1::EnableCommentary)
 STUB_FUNC(Lua_V1::LoadRemappedKeys)
+STUB_FUNC(Lua_V1::AreAchievementsInstalled)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1005,7 +1006,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "SetAdvancedLighting", LUA_OPCODE(Lua_V1, SetAdvancedLighting) },
 	{ "SetLanguage", LUA_OPCODE(Lua_V1, SetLanguage) },
 	{ "EnableCommentary", LUA_OPCODE(Lua_V1, EnableCommentary) },
-	{ "LoadRemappedKeys", LUA_OPCODE(Lua_V1, LoadRemappedKeys) }
+	{ "LoadRemappedKeys", LUA_OPCODE(Lua_V1, LoadRemappedKeys) },
+	{ "AreAchievementsInstalled", LUA_OPCODE(Lua_V1, AreAchievementsInstalled) }
 };
 
 void Lua_V1::registerOpcodes() {
