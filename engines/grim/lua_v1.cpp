@@ -991,13 +991,15 @@ STUB_FUNC(Lua_V1::PreloadCursors)
 STUB_FUNC(Lua_V1::ImSetCommentaryVol)
 STUB_FUNC(Lua_V1::SetMouseSpeedScale)
 STUB_FUNC(Lua_V1::SetResolutionScaling)
+STUB_FUNC(Lua_V1::SetAdvancedLighting)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
 	{ "PreloadCursors", LUA_OPCODE(Lua_V1, PreloadCursors) },
 	{ "ImSetCommentaryVol", LUA_OPCODE(Lua_V1, ImSetCommentaryVol) },
 	{ "SetMouseSpeedScale", LUA_OPCODE(Lua_V1, SetMouseSpeedScale) },
-	{ "SetResolutionScaling", LUA_OPCODE(Lua_V1, SetResolutionScaling) }
+	{ "SetResolutionScaling", LUA_OPCODE(Lua_V1, SetResolutionScaling) },
+	{ "SetAdvancedLighting", LUA_OPCODE(Lua_V1, SetAdvancedLighting) }
 };
 
 void Lua_V1::registerOpcodes() {
