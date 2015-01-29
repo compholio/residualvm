@@ -286,6 +286,7 @@ protected:
 	DECLARE_LUA_OPCODE(GetMemoryUsage);
 	DECLARE_LUA_OPCODE(GetFontDimensions);
 	DECLARE_LUA_OPCODE(PurgeText);
+	DECLARE_LUA_OPCODE(GetPlatform);
 };
 
 }

@@ -329,6 +329,19 @@ void Lua_V1::Enumerate3DDevices() {
 	lua_pushobject(result);
 }
 
+void Lua_V1::GetPlatform() {
+#if defined(_WIN32) || defined(_WIN64)
+	lua_pushnumber(1);
+#elif defined(__APPLE__)
+	lua_pushnumber(2);
+#elif defined(__linux__)
+	lua_pushnumber(3);
+#else
+	warning("target platform unknown, using windows as a fallback.")
+	lua_pushnumber(1);
+#endif
+}
+
 /* RotateVector takes a vector and rotates it around
  * the point (0,0,0) by the requested number of degrees.
  * This function is used to calculate the locations for
@@ -974,6 +987,10 @@ struct luaL_reg grimHardwareOpcodes[] = {
 	{ "EnumerateVideoDevices", LUA_OPCODE(Lua_V1, EnumerateVideoDevices) }
 };
 
+struct luaL_reg grimRemasteredOpcodes[] = {
+	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) }
+};
+
 void Lua_V1::registerOpcodes() {
 	// Register main opcodes functions
 	luaL_openlib(grimMainOpcodes, ARRAYSIZE(grimMainOpcodes));
@@ -986,6 +1003,9 @@ void Lua_V1::registerOpcodes() {
 
 	// Register hardware opcode functions
 	luaL_openlib(grimHardwareOpcodes, ARRAYSIZE(grimHardwareOpcodes));
+
+	// Register Grim Fandango Remastered opcode functions
+	luaL_openlib(grimRemasteredOpcodes, ARRAYSIZE(grimRemasteredOpcodes));
 
 	LuaBase::registerOpcodes();
 }
