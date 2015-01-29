@@ -101,6 +101,7 @@ Registry::Registry() :
 	ConfMan.registerDefault("talkspeed", 179);
 	ConfMan.registerDefault("game_devel_mode", false);
 	ConfMan.registerDefault("screen_scaling", false);
+	ConfMan.registerDefault("advanced_lighting", true);
 
 	// Read settings
 	_spewOnError.setString(ConfMan.get("spew_on_error"));
@@ -118,6 +119,7 @@ Registry::Registry() :
 	_mouseSpeed.setInt(convertTalkSpeedFromGUI(ConfMan.getInt("mousespeed")));
 	_speechMode.setInt(convertSpeechModeFromGUI(ConfMan.getBool("subtitles"), ConfMan.getBool("speech_mute")));
 	_screenScaling.setBool(convertScreenScalingFromGUI(ConfMan.getBool("screen_scaling")));
+	_advLighting.setBool(convertAdvLightingFromGUI(ConfMan.getBool("advanced_lighting")));
 
 	// These can't be set as bool because the scripts do a check against "TRUE" and "FALSE".
 	// Right, they do string comparisons. doh!
@@ -158,6 +160,8 @@ Registry::Value &Registry::value(const Common::String &key) {
 		return _speechMode;
 	} else if (scumm_stricmp("ResolutionScaling", key.c_str()) == 0) {
 		return _screenScaling;
+	} else if (scumm_stricmp("AdvancedLighting", key.c_str()) == 0) {
+		return _advLighting;
 	} else if (scumm_stricmp("MovementMode", key.c_str()) == 0) {
 		return _movement;
 	} else if (scumm_stricmp("JoystickEnabled", key.c_str()) == 0) {
@@ -202,6 +206,8 @@ const Registry::Value &Registry::value(const Common::String &key) const {
 		return _speechMode;
 	} else if (scumm_stricmp("ResolutionScaling", key.c_str()) == 0) {
 		return _screenScaling;
+	} else if (scumm_stricmp("AdvancedLighting", key.c_str()) == 0) {
+		return _advLighting;
 	} else if (scumm_stricmp("MovementMode", key.c_str()) == 0) {
 		return _movement;
 	} else if (scumm_stricmp("JoystickEnabled", key.c_str()) == 0) {
@@ -265,6 +271,7 @@ void Registry::save() {
 	ConfMan.setInt("mousespeed", convertTalkSpeedToGUI(_mouseSpeed.getInt()));
 	ConfMan.setBool("subtitles", convertSubtitlesToGUI(_speechMode.getInt()));
 	ConfMan.setBool("screen_scaling", convertScreenScalingToGUI(_screenScaling.getInt()));
+	ConfMan.setBool("advanced_lighting", convertAdvLightingToGUI(_advLighting.getInt()));
 	ConfMan.setBool("speech_mute", convertSpeechMuteToGUI(_speechMode.getInt()));
 
 	ConfMan.set("movement", _movement.getString());
@@ -317,6 +324,16 @@ bool Registry::convertScreenScalingToGUI(uint scaling) {
 
 uint Registry::convertScreenScalingFromGUI(bool scaling) {
 	if (scaling)
+		return 1;
+	return 2;
+}
+
+bool Registry::convertAdvLightingToGUI(uint adv_lighting) {
+	return (adv_lighting == 1);
+}
+
+uint Registry::convertAdvLightingFromGUI(bool adv_lighting) {
+	if (adv_lighting)
 		return 1;
 	return 2;
 }

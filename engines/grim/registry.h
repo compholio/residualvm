@@ -96,6 +96,7 @@ private:
 	Value _spewOnError;
 	Value _transcript;
 	Value _screenScaling;
+	Value _advLighting;
 
 	bool _dirty;
 
@@ -108,6 +109,8 @@ private:
 	uint convertSpeechModeFromGUI(bool subtitles, bool speechMute);
 	bool convertScreenScalingToGUI(uint scaling);
 	uint convertScreenScalingFromGUI(bool scaling);
+	bool convertAdvLightingToGUI(uint scaling);
+	uint convertAdvLightingFromGUI(bool scaling);
 };
 
 extern Registry *g_registry;
