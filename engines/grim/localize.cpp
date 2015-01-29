@@ -91,7 +91,7 @@ Localizer::Localizer() {
 	delete f;
 
 	// Explicitly white-list german demo, as it has a .tab-file
-	if ((isTranslatedGrimDemo) || (!isAnyDemo && !isPS2)) {
+	if ((isTranslatedGrimDemo) || (!isAnyDemo && !isPS2 && !isGrimRemastered)) {
 		if (filesize < 4)
 			error("%s to short: %i", filename.c_str(), filesize);
 		switch (READ_BE_UINT32(data)) {
@@ -115,10 +115,15 @@ Localizer::Localizer() {
 		}
 	}
 
+	// Grim Remastered does not have a magic header
+	if(!isGrimRemastered) {
+		data = data + 4;
+	}
+
 	char *nextline = data;
 	Common::String last_entry;
 	//Read file till end
-	for (char *line = data + 4; line - data <= filesize; line = nextline + 1) {
+	for (char *line = data; line - data <= filesize; line = nextline + 1) {
 		if (line == nullptr || nextline == nullptr) {
 			break;
 		}
@@ -129,9 +134,13 @@ Localizer::Localizer() {
 			nextline = strchr(line, '\0');
 		}
 
-		//in grim we have to exit on first empty line else skip line
-		if (*line == '\r') {
-			if (g_grim->getGameType() == GType_GRIM) {
+		if (*line == '#') {
+			//in Grim Remastered we need to skip comment lines
+			nextline = strchr(line + 2, '\n');
+			continue;
+		} else if (*line == '\r') {
+			//in grim original we have to exit on first empty line else skip line
+			if (!isGrimRemastered && g_grim->getGameType() == GType_GRIM) {
 				break;
 			}
 
