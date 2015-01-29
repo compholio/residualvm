@@ -996,6 +996,7 @@ STUB_FUNC(Lua_V1::SetLanguage)
 STUB_FUNC(Lua_V1::EnableCommentary)
 STUB_FUNC(Lua_V1::LoadRemappedKeys)
 STUB_FUNC(Lua_V1::AreAchievementsInstalled)
+STUB_FUNC(Lua_V1::GlobalSaveResolved)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1007,7 +1008,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "SetLanguage", LUA_OPCODE(Lua_V1, SetLanguage) },
 	{ "EnableCommentary", LUA_OPCODE(Lua_V1, EnableCommentary) },
 	{ "LoadRemappedKeys", LUA_OPCODE(Lua_V1, LoadRemappedKeys) },
-	{ "AreAchievementsInstalled", LUA_OPCODE(Lua_V1, AreAchievementsInstalled) }
+	{ "AreAchievementsInstalled", LUA_OPCODE(Lua_V1, AreAchievementsInstalled) },
+	{ "GlobalSaveResolved", LUA_OPCODE(Lua_V1, GlobalSaveResolved) }
 };
 
 void Lua_V1::registerOpcodes() {

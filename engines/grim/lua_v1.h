@@ -296,6 +296,7 @@ protected:
 	DECLARE_LUA_OPCODE(EnableCommentary);
 	DECLARE_LUA_OPCODE(LoadRemappedKeys);
 	DECLARE_LUA_OPCODE(AreAchievementsInstalled);
+	DECLARE_LUA_OPCODE(GlobalSaveResolved);
 };
 
 }
