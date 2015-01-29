@@ -987,8 +987,11 @@ struct luaL_reg grimHardwareOpcodes[] = {
 	{ "EnumerateVideoDevices", LUA_OPCODE(Lua_V1, EnumerateVideoDevices) }
 };
 
+STUB_FUNC(Lua_V1::PreloadCursors)
+
 struct luaL_reg grimRemasteredOpcodes[] = {
-	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) }
+	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
+	{ "PreloadCursors", LUA_OPCODE(Lua_V1, PreloadCursors) }
 };
 
 void Lua_V1::registerOpcodes() {
