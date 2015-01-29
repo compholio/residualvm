@@ -989,11 +989,13 @@ struct luaL_reg grimHardwareOpcodes[] = {
 
 STUB_FUNC(Lua_V1::PreloadCursors)
 STUB_FUNC(Lua_V1::ImSetCommentaryVol)
+STUB_FUNC(Lua_V1::SetMouseSpeedScale)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
 	{ "PreloadCursors", LUA_OPCODE(Lua_V1, PreloadCursors) },
-	{ "ImSetCommentaryVol", LUA_OPCODE(Lua_V1, ImSetCommentaryVol) }
+	{ "ImSetCommentaryVol", LUA_OPCODE(Lua_V1, ImSetCommentaryVol) },
+	{ "SetMouseSpeedScale", LUA_OPCODE(Lua_V1, SetMouseSpeedScale) }
 };
 
 void Lua_V1::registerOpcodes() {

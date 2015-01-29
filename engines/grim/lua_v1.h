@@ -289,6 +289,7 @@ protected:
 	DECLARE_LUA_OPCODE(GetPlatform);
 	DECLARE_LUA_OPCODE(PreloadCursors);
 	DECLARE_LUA_OPCODE(ImSetCommentaryVol);
+	DECLARE_LUA_OPCODE(SetMouseSpeedScale);
 };
 
 }
