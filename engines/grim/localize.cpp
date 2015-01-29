@@ -36,8 +36,13 @@ Localizer::Localizer() {
 	// To avoid too wide lines further below, we just name these here.
 	bool isAnyDemo = g_grim->getGameFlags() & ADGF_DEMO;
 	bool isGrimDemo = g_grim->getGameType() == GType_GRIM && isAnyDemo;
+	bool isAnyRemastered = g_grim->getGameFlags() & ADGF_REMASTERED;
+	bool isGrimRemastered = g_grim->getGameType() == GType_GRIM && isAnyRemastered;
 	bool isGerman = g_grim->getGameLanguage() == Common::DE_DEU;
 	bool isFrench = g_grim->getGameLanguage() == Common::FR_FRA;
+	bool isSpanish = g_grim->getGameLanguage() == Common::ES_ESP;
+	bool isItalian = g_grim->getGameLanguage() == Common::IT_ITA;
+	bool isPortuguese = g_grim->getGameLanguage() == Common::PT_BRA;
 	bool isTranslatedGrimDemo = (isGerman || isFrench) && isGrimDemo;
 	bool isPS2 = g_grim->getGamePlatform() == Common::kPlatformPS2;
 
@@ -50,6 +55,22 @@ Localizer::Localizer() {
 	} else {
 		if (isTranslatedGrimDemo) {
 			filename = "language.tab";
+		} else if (isGrimRemastered) {
+			Common::String lang;
+			if(isGerman) {
+				lang = "de";
+			} else if(isFrench) {
+				lang = "fr";
+			} else if(isSpanish) {
+				lang = "es";
+			} else if(isItalian) {
+				lang = "it";
+			} else if(isPortuguese) {
+				lang = "pt";
+			} else {
+				lang = "en";
+			}
+			filename = "grim." + lang + ".tab";
 		} else {
 			filename = "grim.tab";
 		}
