@@ -89,6 +89,7 @@ private:
 	Value _gamma;
 	Value _voiceEffects;
 	Value _textSpeed;
+	Value _mouseSpeed;
 	Value _speechMode;
 	Value _movement;
 	Value _joystick;
