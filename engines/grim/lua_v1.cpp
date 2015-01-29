@@ -214,6 +214,24 @@ void Lua_V1::ReadRegistryValue() {
 	}
 }
 
+void Lua_V1::ReadRegistryIntValue() {
+	lua_Object keyObj = lua_getparam(1);
+
+	if (!lua_isstring(keyObj)) {
+		lua_pushnil();
+		return;
+	}
+	const char *key = lua_getstring(keyObj);
+
+	Registry::ValueType type = g_registry->getValueType(key);
+	if (type != Registry::Integer) {
+		warning("requested registry value is not an integer!");
+		lua_pushnil();
+		return;
+	}
+	lua_pushnumber(g_registry->getInt(key));
+}
+
 void Lua_V1::WriteRegistryValue() {
 	lua_Object keyObj = lua_getparam(1);
 	lua_Object valObj = lua_getparam(2);
@@ -1009,7 +1027,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "EnableCommentary", LUA_OPCODE(Lua_V1, EnableCommentary) },
 	{ "LoadRemappedKeys", LUA_OPCODE(Lua_V1, LoadRemappedKeys) },
 	{ "AreAchievementsInstalled", LUA_OPCODE(Lua_V1, AreAchievementsInstalled) },
-	{ "GlobalSaveResolved", LUA_OPCODE(Lua_V1, GlobalSaveResolved) }
+	{ "GlobalSaveResolved", LUA_OPCODE(Lua_V1, GlobalSaveResolved) },
+	{ "ReadRegistryIntValue", LUA_OPCODE(Lua_V1, ReadRegistryIntValue) }
 };
 
 void Lua_V1::registerOpcodes() {
