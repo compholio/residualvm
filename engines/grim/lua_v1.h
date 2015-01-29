@@ -292,6 +292,7 @@ protected:
 	DECLARE_LUA_OPCODE(SetMouseSpeedScale);
 	DECLARE_LUA_OPCODE(SetResolutionScaling);
 	DECLARE_LUA_OPCODE(SetAdvancedLighting);
+	DECLARE_LUA_OPCODE(SetLanguage);
 };
 
 }
