@@ -1046,6 +1046,7 @@ STUB_FUNC(Lua_V1::IsConceptUnlocked)
 STUB_FUNC(Lua_V1::UnlockConcept)
 STUB_FUNC(Lua_V1::UnlockCutscene)
 STUB_FUNC(Lua_V1::HasHeardCommentary)
+STUB_FUNC(Lua_V1::SetCommentary)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1072,7 +1073,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "IsConceptUnlocked", LUA_OPCODE(Lua_V1, IsConceptUnlocked) },
 	{ "UnlockConcept", LUA_OPCODE(Lua_V1, UnlockConcept) },
 	{ "UnlockCutscene", LUA_OPCODE(Lua_V1, UnlockCutscene) },
-	{ "HasHeardCommentary", LUA_OPCODE(Lua_V1, HasHeardCommentary) }
+	{ "HasHeardCommentary", LUA_OPCODE(Lua_V1, HasHeardCommentary) },
+	{ "SetCommentary", LUA_OPCODE(Lua_V1, SetCommentary) }
 };
 
 void Lua_V1::registerOpcodes() {
