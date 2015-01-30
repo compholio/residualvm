@@ -304,6 +304,7 @@ protected:
 	DECLARE_LUA_OPCODE(GetGameRenderMode);
 	DECLARE_LUA_OPCODE(WidescreenCorrectionFactor);
 	DECLARE_LUA_OPCODE(OverlayCreate);
+	DECLARE_LUA_OPCODE(OverlayDimensions);
 };
 
 }
