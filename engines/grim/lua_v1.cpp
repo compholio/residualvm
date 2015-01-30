@@ -360,6 +360,16 @@ void Lua_V1::GetPlatform() {
 #endif
 }
 
+void Lua_V1::WidescreenCorrectionFactor() {
+	bool widescreen = g_registry->getBool("widescreen");
+	if (widescreen) {
+		warning("Semi-Stub function: %s\n", SCUMMVM_CURRENT_FUNCTION);
+		lua_pushnumber(1.0);
+	} else {
+		lua_pushnumber(1.0);
+	}
+}
+
 /* RotateVector takes a vector and rotates it around
  * the point (0,0,0) by the requested number of degrees.
  * This function is used to calculate the locations for
@@ -1036,7 +1046,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "SetGameRenderMode", LUA_OPCODE(Lua_V1, SetGameRenderMode) },
 	{ "StopCommentaryImmediately", LUA_OPCODE(Lua_V1, StopCommentaryImmediately) },
 	{ "OverlayClearCache", LUA_OPCODE(Lua_V1, OverlayClearCache) },
-	{ "GetGameRenderMode", LUA_OPCODE(Lua_V1, GetGameRenderMode) }
+	{ "GetGameRenderMode", LUA_OPCODE(Lua_V1, GetGameRenderMode) },
+	{ "WidescreenCorrectionFactor", LUA_OPCODE(Lua_V1, WidescreenCorrectionFactor) }
 };
 
 void Lua_V1::registerOpcodes() {

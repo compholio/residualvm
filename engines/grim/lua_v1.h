@@ -302,6 +302,7 @@ protected:
 	DECLARE_LUA_OPCODE(StopCommentaryImmediately);
 	DECLARE_LUA_OPCODE(OverlayClearCache);
 	DECLARE_LUA_OPCODE(GetGameRenderMode);
+	DECLARE_LUA_OPCODE(WidescreenCorrectionFactor);
 };
 
 }
