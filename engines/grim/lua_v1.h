@@ -310,6 +310,7 @@ protected:
 	DECLARE_LUA_OPCODE(IsConceptUnlocked);
 	DECLARE_LUA_OPCODE(UnlockConcept);
 	DECLARE_LUA_OPCODE(UnlockCutscene);
+	DECLARE_LUA_OPCODE(HasHeardCommentary);
 };
 
 }
