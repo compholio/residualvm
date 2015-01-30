@@ -315,6 +315,7 @@ protected:
 	DECLARE_LUA_OPCODE(ClearCommentary);
 	DECLARE_LUA_OPCODE(SetActorHKHackMode);
 	DECLARE_LUA_OPCODE(AddHotspot);
+	DECLARE_LUA_OPCODE(SetCursor);
 };
 
 }
