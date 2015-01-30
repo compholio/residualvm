@@ -1031,6 +1031,7 @@ STUB_FUNC(Lua_V1::OverlayClearCache)
 STUB_FUNC(Lua_V1::GetGameRenderMode)
 STUB_FUNC(Lua_V1::OverlayCreate)
 STUB_FUNC(Lua_V1::OverlayDimensions)
+STUB_FUNC(Lua_V1::OverlayMove)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1051,7 +1052,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetGameRenderMode", LUA_OPCODE(Lua_V1, GetGameRenderMode) },
 	{ "WidescreenCorrectionFactor", LUA_OPCODE(Lua_V1, WidescreenCorrectionFactor) },
 	{ "OverlayCreate", LUA_OPCODE(Lua_V1, OverlayCreate) },
-	{ "OverlayDimensions", LUA_OPCODE(Lua_V1, OverlayDimensions) }
+	{ "OverlayDimensions", LUA_OPCODE(Lua_V1, OverlayDimensions) },
+	{ "OverlayMove", LUA_OPCODE(Lua_V1, OverlayMove) }
 };
 
 void Lua_V1::registerOpcodes() {
