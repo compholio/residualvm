@@ -1018,6 +1018,7 @@ STUB_FUNC(Lua_V1::GlobalSaveResolved)
 STUB_FUNC(Lua_V1::SetGameRenderMode)
 STUB_FUNC(Lua_V1::StopCommentaryImmediately)
 STUB_FUNC(Lua_V1::OverlayClearCache)
+STUB_FUNC(Lua_V1::GetGameRenderMode)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1034,7 +1035,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "ReadRegistryIntValue", LUA_OPCODE(Lua_V1, ReadRegistryIntValue) },
 	{ "SetGameRenderMode", LUA_OPCODE(Lua_V1, SetGameRenderMode) },
 	{ "StopCommentaryImmediately", LUA_OPCODE(Lua_V1, StopCommentaryImmediately) },
-	{ "OverlayClearCache", LUA_OPCODE(Lua_V1, OverlayClearCache) }
+	{ "OverlayClearCache", LUA_OPCODE(Lua_V1, OverlayClearCache) },
+	{ "GetGameRenderMode", LUA_OPCODE(Lua_V1, GetGameRenderMode) }
 };
 
 void Lua_V1::registerOpcodes() {
