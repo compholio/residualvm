@@ -300,6 +300,7 @@ protected:
 	DECLARE_LUA_OPCODE(ReadRegistryIntValue);
 	DECLARE_LUA_OPCODE(SetGameRenderMode);
 	DECLARE_LUA_OPCODE(StopCommentaryImmediately);
+	DECLARE_LUA_OPCODE(OverlayClearCache);
 };
 
 }
