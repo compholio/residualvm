@@ -95,6 +95,7 @@ public:
 
 private:
 	int _numVertices;
+	int _numTriangles;
 	int _id;
 	int _numSortplanes;
 	int *_sortplanes;
@@ -104,6 +105,7 @@ private:
 	bool _visible;
 	bool _invalid;
 	Math::Vector3d *_vertices;
+	Math::Vector3d *_triangles;
 	Math::Vector3d *_origVertices;
 	float _height;
 	float _shrinkRadius;

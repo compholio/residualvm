@@ -32,24 +32,26 @@
 namespace Grim {
 
 Sector::Sector() :
-		_vertices(nullptr), _origVertices(nullptr), _sortplanes(nullptr),_invalid(false),
-		_shrinkRadius(0.f), _numVertices(0), _id(0), _numSortplanes(0),
-		_type(NoneType), _visible(false), _height(0.f) {
+		_vertices(nullptr), _triangles(nullptr), _origVertices(nullptr), _sortplanes(nullptr),
+		_invalid(false), _shrinkRadius(0.f), _numVertices(0), _numTriangles(0), _id(0),
+		_numSortplanes(0), _type(NoneType), _visible(false), _height(0.f) {
  }
 
 Sector::Sector(const Sector &other) :
-		_vertices(nullptr), _origVertices(nullptr), _sortplanes(nullptr) {
+		_vertices(nullptr), _triangles(nullptr), _origVertices(nullptr), _sortplanes(nullptr) {
 	*this = other;
 }
 
 Sector::~Sector() {
 	delete[] _vertices;
+	delete[] _triangles;
 	delete[] _origVertices;
 	delete[] _sortplanes;
 }
 
 void Sector::saveState(SaveGame *savedState) const {
 	savedState->writeLESint32(_numVertices);
+	savedState->writeLESint32(_numTriangles);
 	savedState->writeLESint32(_id);
 	savedState->writeLESint32(_type);
 	savedState->writeBool(_visible);
@@ -59,6 +61,10 @@ void Sector::saveState(SaveGame *savedState) const {
 
 	for (int i = 0; i < _numVertices + 1; ++i) {
 		savedState->writeVector3d(_vertices[i]);
+	}
+
+	for (int i = 0; i < _numTriangles; ++i) {
+		savedState->writeVector3d(_triangles[i]);
 	}
 
 	savedState->writeVector3d(_normal);
@@ -81,6 +87,7 @@ void Sector::saveState(SaveGame *savedState) const {
 
 bool Sector::restoreState(SaveGame *savedState) {
 	_numVertices = savedState->readLESint32();
+	_numTriangles = savedState->readLESint32();
 	_id          = savedState->readLESint32();
 	_type        = (SectorType)savedState->readLESint32();
 	_visible     = savedState->readBool();
@@ -91,6 +98,11 @@ bool Sector::restoreState(SaveGame *savedState) {
 	_vertices = new Math::Vector3d[_numVertices + 1];
 	for (int i = 0; i < _numVertices + 1; ++i) {
 		_vertices[i] = savedState->readVector3d();
+	}
+
+	_vertices = new Math::Vector3d[_numTriangles];
+	for (int i = 0; i < _numTriangles; ++i) {
+		_triangles[i] = savedState->readVector3d();
 	}
 
 	_normal = savedState->readVector3d();
@@ -166,11 +178,24 @@ void Sector::load(TextSplitter &ts) {
 	// Repeat the last vertex for convenience
 	_vertices[_numVertices] = _vertices[0];
 
+	// Grim Remastered has an additional parameter for triangles
+	if (ts.checkString("numtris")) {
+		ts.scanString(" numtris %d", 1, &_numTriangles);
+	}
+	if (_numTriangles != 0) {
+		warning("triangles are not properly supported yet");
+		_triangles = new Math::Vector3d[_numTriangles];
+		ts.scanString(" triangles: %f %f %f", 3, &_triangles[0].x(), &_triangles[0].y(), &_triangles[0].z());
+		for (i = 1; i < _numTriangles; i++)
+			ts.scanString(" %f %f %f", 3, &_triangles[i].x(), &_triangles[i].y(), &_triangles[i].z());
+	}
+
 	_normal = Math::Vector3d::crossProduct(_vertices[1] - _vertices[0],
 										   _vertices[_numVertices - 1] - _vertices[0]);
 	float length = _normal.getMagnitude();
 	if (length > 0)
 		_normal /= length;
+
 }
 
 void Sector::loadBinary(Common::SeekableReadStream *data) {
@@ -512,6 +537,7 @@ void Sector::getExitInfo(const Math::Vector3d &s, const Math::Vector3d &dirVec, 
 
 Sector &Sector::operator=(const Sector &other) {
 	_numVertices = other._numVertices;
+	_numTriangles = other._numTriangles;
 	_id = other._id;
 	_name = other._name;
 	_type = other._type;
@@ -519,6 +545,10 @@ Sector &Sector::operator=(const Sector &other) {
 	_vertices = new Math::Vector3d[_numVertices + 1];
 	for (int i = 0; i < _numVertices + 1; ++i) {
 		_vertices[i] = other._vertices[i];
+	}
+	_triangles = new Math::Vector3d[_numTriangles];
+	for (int i = 0; i < _numTriangles; ++i) {
+		_triangles[i] = other._triangles[i];
 	}
 	if (other._origVertices) {
 		_origVertices = new Math::Vector3d[_numVertices + 1];
@@ -538,12 +568,16 @@ Sector &Sector::operator=(const Sector &other) {
 
 bool Sector::operator==(const Sector &other) const {
 	bool ok = _numVertices == other._numVertices &&
+			  _numTriangles == other._numTriangles &&
 			  _id == other._id &&
 			  _name == other._name &&
 			  _type == other._type &&
 			  _visible == other._visible;
 	for (int i = 0; i < _numVertices + 1; ++i) {
 		ok = ok && _vertices[i] == other._vertices[i];
+	}
+	for (int i = 0; i < _numTriangles; ++i) {
+		ok = ok && _triangles[i] == other._triangles[i];
 	}
 	ok = ok && _height == other._height &&
 		 _normal == other._normal;
