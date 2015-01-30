@@ -706,6 +706,16 @@ void Lua_V1::LockFont() {
 	lua_pushnil();
 }
 
+void Lua_V1::GetFontDimensions() {
+	lua_Object fontObj = lua_getparam(1);
+
+	if (lua_isuserdata(fontObj) && lua_tag(fontObj) == MKTAG('F','O','N','T')) {
+		Font *fontObject = getfont(fontObj);
+		warning("Semi-Stub function: %s\n", SCUMMVM_CURRENT_FUNCTION);
+		lua_pushnumber(fontObject->getStringHeight("X"));
+	}
+}
+
 void Lua_V1::EnableDebugKeys() {
 }
 
@@ -759,7 +769,6 @@ STUB_FUNC(Lua_V1::GetCameraFOV)
 STUB_FUNC(Lua_V1::SetCameraFOV)
 STUB_FUNC(Lua_V1::GetCameraRoll)
 STUB_FUNC(Lua_V1::GetMemoryUsage)
-STUB_FUNC(Lua_V1::GetFontDimensions)
 STUB_FUNC(Lua_V1::PurgeText)
 
 struct luaL_reg grimMainOpcodes[] = {
