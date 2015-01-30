@@ -309,6 +309,7 @@ protected:
 	DECLARE_LUA_OPCODE(ShowCursor);
 	DECLARE_LUA_OPCODE(IsConceptUnlocked);
 	DECLARE_LUA_OPCODE(UnlockConcept);
+	DECLARE_LUA_OPCODE(UnlockCutscene);
 };
 
 }
