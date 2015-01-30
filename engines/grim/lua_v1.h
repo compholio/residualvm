@@ -312,6 +312,7 @@ protected:
 	DECLARE_LUA_OPCODE(UnlockCutscene);
 	DECLARE_LUA_OPCODE(HasHeardCommentary);
 	DECLARE_LUA_OPCODE(SetCommentary);
+	DECLARE_LUA_OPCODE(ClearCommentary);
 };
 
 }
