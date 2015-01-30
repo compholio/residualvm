@@ -716,6 +716,12 @@ void Lua_V1::GetFontDimensions() {
 	}
 }
 
+void Lua_V1::OverlayDimensions() {
+	warning("Stub function: %s\n", SCUMMVM_CURRENT_FUNCTION);
+	lua_pushnumber(0);
+	lua_pushnumber(0);
+}
+
 void Lua_V1::EnableDebugKeys() {
 }
 
@@ -1039,7 +1045,6 @@ STUB_FUNC(Lua_V1::StopCommentaryImmediately)
 STUB_FUNC(Lua_V1::OverlayClearCache)
 STUB_FUNC(Lua_V1::GetGameRenderMode)
 STUB_FUNC(Lua_V1::OverlayCreate)
-STUB_FUNC(Lua_V1::OverlayDimensions)
 STUB_FUNC(Lua_V1::OverlayMove)
 STUB_FUNC(Lua_V1::ShowCursor)
 STUB_FUNC(Lua_V1::IsConceptUnlocked)
