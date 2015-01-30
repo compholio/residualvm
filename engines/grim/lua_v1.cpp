@@ -1043,6 +1043,7 @@ STUB_FUNC(Lua_V1::OverlayDimensions)
 STUB_FUNC(Lua_V1::OverlayMove)
 STUB_FUNC(Lua_V1::ShowCursor)
 STUB_FUNC(Lua_V1::IsConceptUnlocked)
+STUB_FUNC(Lua_V1::UnlockConcept)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1066,7 +1067,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "OverlayDimensions", LUA_OPCODE(Lua_V1, OverlayDimensions) },
 	{ "OverlayMove", LUA_OPCODE(Lua_V1, OverlayMove) },
 	{ "ShowCursor", LUA_OPCODE(Lua_V1, ShowCursor) },
-	{ "IsConceptUnlocked", LUA_OPCODE(Lua_V1, IsConceptUnlocked) }
+	{ "IsConceptUnlocked", LUA_OPCODE(Lua_V1, IsConceptUnlocked) },
+	{ "UnlockConcept", LUA_OPCODE(Lua_V1, UnlockConcept) }
 };
 
 void Lua_V1::registerOpcodes() {
