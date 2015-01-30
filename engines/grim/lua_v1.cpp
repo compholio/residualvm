@@ -1054,6 +1054,7 @@ STUB_FUNC(Lua_V1::HasHeardCommentary)
 STUB_FUNC(Lua_V1::SetCommentary)
 STUB_FUNC(Lua_V1::ClearCommentary)
 STUB_FUNC(Lua_V1::SetActorHKHackMode)
+STUB_FUNC(Lua_V1::AddHotspot)
 
 struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "GetPlatform", LUA_OPCODE(Lua_V1, GetPlatform) },
@@ -1083,7 +1084,8 @@ struct luaL_reg grimRemasteredOpcodes[] = {
 	{ "HasHeardCommentary", LUA_OPCODE(Lua_V1, HasHeardCommentary) },
 	{ "SetCommentary", LUA_OPCODE(Lua_V1, SetCommentary) },
 	{ "ClearCommentary", LUA_OPCODE(Lua_V1, ClearCommentary) },
-	{ "SetActorHKHackMode", LUA_OPCODE(Lua_V1, SetActorHKHackMode) }
+	{ "SetActorHKHackMode", LUA_OPCODE(Lua_V1, SetActorHKHackMode) },
+	{ "AddHotspot", LUA_OPCODE(Lua_V1, AddHotspot) }
 };
 
 void Lua_V1::registerOpcodes() {
